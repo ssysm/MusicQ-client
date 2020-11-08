@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Button } from 'antd';
 import HostService from "../services/HostService";
 
 export default function HostPage(props) {
   const stay = 1;
   const [devices, setDevices] = useState([]);
-  const [useDeviceIdx, setUseDeviceIdx] = useState(0);
   const hostService = new HostService();
 
   useEffect(() => {
@@ -33,14 +33,18 @@ export default function HostPage(props) {
     await hostService.skipToPervious();
   }
 
+  const getButtonDisabled = () => {
+    return devices.length === 0;
+  };
+
   return (
     <div>
       <div>
-        <button onClick={getDevices}>Get Devices</button>
-        <button onClick={handlePause}>Pause</button>
-        <button onClick={handlePlay}>Play</button>
-        <button onClick={handleSkip}>Skip</button>
-        <button onClick={handleRewind}>Rewind</button>
+        <Button onClick={getDevices}>Get Devices</Button>
+        <Button onClick={handlePause} disabled={getButtonDisabled()}>Pause</Button>
+        <Button onClick={handlePlay} disabled={getButtonDisabled()}>Play</Button>
+        <Button onClick={handleSkip} disabled={getButtonDisabled()}>Skip</Button>
+        <Button onClick={handleRewind} disabled={getButtonDisabled()}>Rewind</Button>
       </div>
       <div>
         <p>Available Devices</p>

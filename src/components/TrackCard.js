@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "antd";
+import { Image,Card } from "antd";
 
 export default function TrackCard(props) {
   const trackInfo = props.track;
@@ -12,13 +12,12 @@ const isShowRemoveBtn = props.isShowRemoveBtn;
   }
 
   return (
-    <div>
-      <p>{trackName}</p>
+    <Card bordered={true} title={trackName}>
       <Image width={thumbnail.width} src={thumbnail.url} />
       {
           isShowRemoveBtn ?
           <a href="#" onClick={handleRemoveClick}>Remove</a> : null
       }
-    </div>
+    </Card>
   );
 }
