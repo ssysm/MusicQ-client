@@ -1,6 +1,6 @@
 const prod = {
     url: {
-        API_BASE: 'https://api.musicq.space',
+        API_BASE: 'https://api.musicq.online',
     }
 };
 
